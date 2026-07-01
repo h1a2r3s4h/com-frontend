@@ -91,7 +91,7 @@ export function LeadDetail() {
       </div>
 
       <div className="mt-5 flex flex-wrap gap-2">
-        <EditLeadDialog lead={lead} />
+        {/* <EditLeadDialog lead={lead} /> */}
 
         <Button onClick={() => addCall(lead.id, "Manual call logged")}>
           Log Call
@@ -116,13 +116,24 @@ export function LeadDetail() {
             }
           }}
         >
-          Delete Lead
+          Loss Lead
         </Button>
       </div>
       
 
       <div className="mt-6 grid grid-cols-2 gap-4">
-        <InfoCard title="Phone" value={lead.phone} />
+       <div className="rounded-lg border p-4">
+  <p className="text-xs font-semibold uppercase text-slate-500">
+    Phone
+  </p>
+
+  <a
+    href={`tel:${lead.phone}`}
+    className="mt-1 flex items-center gap-2 font-medium text-teal-600 hover:underline"
+  >
+    📞 {lead.phone}
+  </a>
+</div>
 
         <InfoCard title="Owner" value="Ravi Kumar" />
 

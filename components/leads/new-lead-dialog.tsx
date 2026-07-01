@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/dialog";
 
 export function NewLeadDialog() {
-  const { addLead } = useLeadStore();
+const { addLead, leads } = useLeadStore();
 
   const [open, setOpen] =
     useState(false);
@@ -23,7 +23,7 @@ export function NewLeadDialog() {
   const [form, setForm] =
     useState({
       name: "",
-      phone: "",
+      phone: "+91 ",
       society: "",
       location: "",
       requirement: "",
@@ -36,23 +36,32 @@ export function NewLeadDialog() {
     });
 
   const handleSubmit = () => {
-    if (!form.name) return;
+  if (!form.name) return;
 
-    addLead(form);
+  const exists = leads.some(
+    (lead) => lead.phone === form.phone
+  );
 
-    setOpen(false);
+  if (exists) {
+    alert("Phone number already exists.");
+    return;
+  }
 
-    setForm({
-      name: "",
-      phone: "",
-      society: "",
-      location: "",
-      requirement: "",
-      budget: "",
-      stage: "New",
-      priority: "Warm",
-    });
-  };
+  addLead(form);
+
+  setOpen(false);
+
+  setForm({
+    name: "",
+    phone: "+91 ",
+    society: "",
+    location: "",
+    requirement: "",
+    budget: "",
+    stage: "New",
+    priority: "Warm",
+  });
+};
 
   return (
     <Dialog
@@ -85,15 +94,18 @@ export function NewLeadDialog() {
           />
 
           <Input
-            placeholder="Phone"
-            value={form.phone}
-            onChange={(e) =>
-              setForm({
-                ...form,
-                phone: e.target.value,
-              })
-            }
-          />
+  placeholder="Phone"
+  value={form.phone}
+  maxLength={14} // +91 + 10 digits
+  onChange={(e) => {
+    const digits = e.target.value.replace(/\D/g, "").slice(2, 12);
+
+    setForm({
+      ...form,
+      phone: `+91 ${digits}`,
+    });
+  }}
+/>
 
           <Input
             placeholder="Society"
