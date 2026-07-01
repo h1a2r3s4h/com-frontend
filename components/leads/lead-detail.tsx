@@ -10,7 +10,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useLeadStore } from "@/store/lead-store";
-import { EditLeadDialog } from "./edit-lead-dialog";
 import { AddNoteDialog } from "./add-note-dialog";
 function InfoCard({ title, value }: { title: string; value: string }) {
   return (
@@ -28,7 +27,6 @@ export function LeadDetail() {
     notes,
     selectedLeadId,
     updateStage,
-    addNote,
     addTask,
     addCall,
     deleteLead,
@@ -49,7 +47,7 @@ export function LeadDetail() {
 
   return (
     <div className="rounded-lg border bg-white p-5">
-      <div className="flex items-start justify-between">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <p
             className={
@@ -63,14 +61,14 @@ export function LeadDetail() {
             {lead.priority} Prospect
           </p>
 
-          <h2 className="mt-1 text-2xl font-bold">{lead.name}</h2>
+          <h2 className="mt-1 text-2xl font-bold break-words">{lead.name}</h2>
         </div>
 
         <Select
           value={lead.stage}
           onValueChange={(value) => updateStage(lead.id, value)}
         >
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger className="w-full sm:w-[180px]">
             <SelectValue />
           </SelectTrigger>
 
@@ -121,7 +119,7 @@ export function LeadDetail() {
       </div>
       
 
-      <div className="mt-6 grid grid-cols-2 gap-4">
+      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
        <div className="rounded-lg border p-4">
   <p className="text-xs font-semibold uppercase text-slate-500">
     Phone

@@ -21,8 +21,8 @@ export function LeadFilters() {
 } = useFilterStore();
 
   return (
-    <div className="mb-4 flex items-end gap-4 rounded-lg border bg-white p-4">
-      <div className="w-44">
+    <div className="mb-4 flex flex-col gap-4 sm:flex-row sm:flex-wrap md:flex-nowrap sm:items-end rounded-lg border bg-white p-4">
+      <div className="w-full sm:w-44">
         <label className="mb-2 block text-xs font-semibold text-slate-500">
           Stage
         </label>
@@ -67,7 +67,7 @@ export function LeadFilters() {
         </Select>
       </div>
 
-      <div className="w-44">
+      <div className="w-full sm:w-44">
         <label className="mb-2 block text-xs font-semibold text-slate-500">
           Source
         </label>
@@ -86,7 +86,7 @@ export function LeadFilters() {
         </Select>
       </div>
 
-      <div className="w-44">
+      <div className="w-full sm:w-44">
         <label className="mb-2 block text-xs font-semibold text-slate-500">
           Priority
         </label>
@@ -121,6 +121,7 @@ export function LeadFilters() {
 
       <Button
   variant="outline"
+  className="w-full sm:w-auto"
   onClick={() => {
     setStage("All");
     setPriority("All");

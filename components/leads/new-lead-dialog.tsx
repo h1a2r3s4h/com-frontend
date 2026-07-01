@@ -74,14 +74,14 @@ const { addLead, leads } = useLeadStore();
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="max-w-3xl">
+      <DialogContent className="sm:max-w-3xl">
         <DialogHeader>
           <DialogTitle>
             Create Lead
           </DialogTitle>
         </DialogHeader>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Input
             placeholder="Name"
             value={form.name}
@@ -141,7 +141,7 @@ const { addLead, leads } = useLeadStore();
                   e.target.value,
               })
             }
-            className="col-span-2"
+            className="col-span-1 sm:col-span-2"
           />
 
           <Input

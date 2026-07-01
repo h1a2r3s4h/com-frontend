@@ -12,7 +12,7 @@ export default function PipelinePage() {
         <LeadFilters />
       </div>
 
-      <div className="mt-6 grid gap-6 lg:grid-cols-[420px_1fr]">
+      <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-[420px_1fr]">
         <LeadList />
         <LeadDetail />
       </div>

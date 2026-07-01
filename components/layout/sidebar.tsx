@@ -26,7 +26,13 @@ const navItems = [
   },
 ];
 
-export function Sidebar() {
+export function Sidebar({
+  isOpen,
+  onClose,
+}: {
+  isOpen?: boolean;
+  onClose?: () => void;
+}) {
   const pathname = usePathname();
 
 <Link
@@ -41,18 +47,35 @@ export function Sidebar() {
 </Link>
 
   return (
-    <aside className="flex h-screen flex-col bg-slate-950 p-4 text-white">
-      <div className="flex items-center gap-3">
-        <div className="flex h-10 w-10 items-center justify-center rounded-md bg-teal-700 text-sm font-semibold">
-          PI
+    <aside
+      className={`fixed inset-y-0 left-0 z-50 flex h-screen w-[260px] flex-col bg-slate-950 p-4 text-white transition-transform duration-300 lg:static lg:h-screen lg:translate-x-0 ${
+        isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
+      }`}
+    >
+      <div className="flex items-center justify-between gap-3">
+        <div className="flex items-center gap-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-md bg-teal-700 text-sm font-semibold">
+            PI
+          </div>
+
+          <div>
+            <p className="text-sm font-semibold">PropInsta CRM</p>
+            <p className="text-xs text-slate-400">
+              Real estate sales desk
+            </p>
+          </div>
         </div>
 
-        <div>
-          <p className="text-sm font-semibold">PropInsta CRM</p>
-          <p className="text-xs text-slate-400">
-            Real estate sales desk
-          </p>
-        </div>
+        {/* Close Button on Mobile */}
+        <button
+          onClick={onClose}
+          className="rounded-md p-1.5 text-slate-400 hover:bg-slate-800 hover:text-white transition lg:hidden"
+          aria-label="Close sidebar"
+        >
+          <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
       </div>
 
       <nav className="mt-8 space-y-2">
@@ -63,6 +86,7 @@ export function Sidebar() {
             <Link
               key={item.label}
               href={item.href}
+              onClick={onClose}
               className={
                 active
                   ? "block rounded-md bg-slate-800 px-4 py-3 text-sm font-medium"

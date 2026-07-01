@@ -40,9 +40,9 @@ export function StageHealth() {
           return (
             <div
               key={stage}
-              className="grid grid-cols-[140px_1fr_40px] items-center gap-3"
+              className="grid grid-cols-[100px_1fr_30px] sm:grid-cols-[140px_1fr_40px] items-center gap-2 sm:gap-3"
             >
-              <p className="text-sm font-medium">
+              <p className="text-sm font-medium truncate" title={stage}>
                 {stage}
               </p>
 

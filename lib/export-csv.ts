@@ -1,4 +1,6 @@
-export function exportLeadsCSV(leads: any[]) {
+import { Lead } from "@/store/lead-store";
+
+export function exportLeadsCSV(leads: Lead[]) {
   const headers = [
     "Name",
     "Phone",

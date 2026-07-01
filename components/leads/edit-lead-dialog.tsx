@@ -65,14 +65,14 @@ export function EditLeadDialog({
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="max-w-2xl">
+      <DialogContent className="sm:max-w-2xl">
         <DialogHeader>
           <DialogTitle>
             Edit Lead
           </DialogTitle>
         </DialogHeader>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Input
             placeholder="Name"
             value={form.name}
@@ -120,7 +120,7 @@ export function EditLeadDialog({
           />
 
           <Input
-            className="col-span-2"
+            className="col-span-1 sm:col-span-2"
             placeholder="Requirement"
             value={form.requirement}
             onChange={(e) =>

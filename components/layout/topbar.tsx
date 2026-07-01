@@ -16,42 +16,45 @@ export function Topbar() {
   const { leads } = useLeadStore();
 
   return (
-    <div className="mb-6 flex items-start justify-between">
+    <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
       <div>
         <p className="text-xs font-bold uppercase text-teal-700">
           Agent Command Center
         </p>
 
-        <h1 className="mt-1 text-5xl font-bold">
+        <h1 className="mt-1 text-2xl sm:text-3xl md:text-5xl font-bold">
           PropInsta Lead Operations
         </h1>
       </div>
 
-      <div className="flex items-end gap-3">
-        <div className="w-80">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-end w-full md:w-auto">
+        <div className="w-full md:w-80">
           <label className="mb-1 block text-xs font-semibold text-slate-500">
             Search
           </label>
 
-        
-
-<Input
-  value={search}
-  onChange={(e) =>
-    setSearch(e.target.value)
-  }
-  placeholder="Search leads"
-/>
+          <Input
+            value={search}
+            onChange={(e) =>
+              setSearch(e.target.value)
+            }
+            placeholder="Search leads"
+          />
         </div>
 
-        <Button
-  variant="outline"
-  onClick={() => exportLeadsCSV(leads)}
->
-  Export CSV
-</Button>
+        <div className="flex gap-2 w-full sm:w-auto">
+          <Button
+            variant="outline"
+            className="flex-1 sm:flex-initial"
+            onClick={() => exportLeadsCSV(leads)}
+          >
+            Export CSV
+          </Button>
 
-        <NewLeadDialog />
+          <div className="flex-1 sm:flex-initial">
+            <NewLeadDialog />
+          </div>
+        </div>
       </div>
     </div>
   );
